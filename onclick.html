@@ -1,0 +1,119 @@
+<! doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>javascript</title>
+    </head>
+	<style>
+          .button{
+            width: 50px;
+            height: 20pxpx;
+            background: #6265a1;
+			box-shadow: 1px 1px 10px 1px;
+			border: 1px solid #353871;
+          }
+		  .click{
+            width: 50px;
+            height: 20pxpx;
+            background: #6265a1;
+			box-shadow: 1px 1px 10px 1px;
+			border: 1px solid #353871;
+		  }
+		  .event {
+		    width: 50px;
+            height: 20pxpx;
+            background: #6265a1;
+			box-shadow: 1px 1px 10px 1px;
+			border: 1px solid #353871;
+		  }
+		  fieldset{
+			width: 250px;
+			margin-bottom: 20px;
+			margin-top: 20px;
+		  }
+    </style>
+    <body>
+        <p>Events onclick</p>
+        <form>
+            <fieldset>
+                <label>name</label>
+                <input type="text">
+                <input type="button" id="no1" class="button" value="NO" onclick="confirm('Are you sure?')">
+            </fieldset>
+			<hr>
+			<fieldset>
+                <label>name</label>
+                <input type="text">
+                <input type="button" id="no2" class="button" value="NO">
+            </fieldset>
+			<hr>
+			<fieldset>
+                <label>name</label>
+                <input type="text">
+                <input type="button" id="click" class="click" value="NO">
+            </fieldset>
+			<fieldset>
+                <label>name</label>
+                <input type="text">
+                <input type="button" id="click" class="click" value="NO" href="http//google.com">
+            </fieldset>
+			<hr>
+			<fieldset>
+                <label>name</label>
+                <input type="text">
+                <input type="button" id="event" class="event" value="NO">
+            </fieldset>
+			<fieldset>
+                <label>name</label>
+                <input type="text">
+                <input type="button" id="event" class="event" value="NO">
+            </fieldset>
+			
+        </form>
+		<script>
+			
+			//for elements with id
+			
+			(function() {
+				var el = document.getElementById('no2');
+				
+				el.onclick = function() {
+					confirm('Are you sure?');
+				};
+				
+			})();
+			
+			// for all elements with the same class
+			
+			(function() {
+			var click = document.getElementsByClassName('click'),
+				l = click.length;
+			
+			  for (var i = 0; i < l; i++ ) {
+			    click[i].onclick = function() {
+				  confirm('Are you sure?');
+				};
+			  };
+			})();
+			
+			// method: addEventListener, give us possibility make few events;
+			
+			(function() {
+			var ev = document.getElementsByClassName('event'),
+				l = ev.length;
+			var showMessage = function() {
+				confirm('Are you sure?');
+			};
+			
+			  for (var i = 0; i < l; i++ ) {
+			      ev[i].addEventListener( 'click', showMessage );
+				  console.log();
+			  };
+			})();
+			// third argument:
+			// true - event go on the the step of capture element;
+			// false - event go on the the step of bubbling element;
+			
+		</script>
+	</body>
+</html>
